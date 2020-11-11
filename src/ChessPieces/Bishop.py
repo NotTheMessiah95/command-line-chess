@@ -1,23 +1,22 @@
 from src.Coordinate import Coordinate as C
-from src.Piece import Piece
+from src.ChessPieces.Piece import Piece
 
 WHITE = True
 BLACK = False
 
 
-class Rook (Piece):
+class Bishop (Piece):
 
-    stringRep = 'R'
-    value = 5
+    stringRep = 'B'
+    value = 3
 
-    def __init__(self, board, side, position,  movesMade=0):
-        super(Rook, self).__init__(board, side, position)
+    def __init__(self, board, side, position, movesMade=0):
+        super(Bishop, self).__init__(board, side, position)
         self.movesMade = movesMade
 
     def getPossibleMoves(self):
         currentPosition = self.position
-
-        directions = [C(0, 1), C(0, -1), C(1, 0), C(-1, 0)]
+        directions = [C(1, 1), C(1, -1), C(-1, 1), C(-1, -1)]
         for direction in directions:
             for move in self.movesInDirectionFromPos(currentPosition,
                                                      direction, self.side):
